@@ -257,7 +257,7 @@ msgstr ""
 
 #: inc/customizer.php:232
 msgid "Add slider Read more button name here"
-msgstr ""
+msgstr "Окуу"
 
 #: inc/customizer.php:246
 msgid "Check To Show This Section"

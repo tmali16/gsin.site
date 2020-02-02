@@ -87,34 +87,34 @@ $inner_cls = 'siteinner';
 
 
 <div class="site-header <?php echo esc_attr($inner_cls); ?>"> 
-  <div class="container-fluid" style="background: #008c2a;"> 
+  <div class="container-fluid" style="background: #377d36;"> 
     <div class="container">
-      <div class="row text-center text-light" style="color:#fff;">
-        <div class="col-md-4 mt-4 mb-3" style="text-align: center;">          
-            Кыргыз Республикасынын Өкмөтүнө караштуу ЖАЗАЛАРДЫ АТКАРУУ МАМЛЕКЕТТИК КЫЗМАТЫ          
+      <div class="row text-center text-light pt-4 pb-2" style="color:#fff;">
+        <div class="col-md-4" style="text-align: center;">          
+            КЫРГЫЗ РЕСПУБЛИКАСЫНЫН ӨКМӨТҮНӨ КАРАШТУУ ЖАЗАЛАРДЫ АТКАРУУ МАМЛЕКЕТТИК КЫЗМАТЫ          
         </div>
-        <div class="col-md-4 mt-4 mb-3 text-center" style="text-align: center;">
-           <h1>
-           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-            <img src="" alt="" srcset="" class="rounded p-4" >          
-           </a>
-           </h1>
+        <div class="col-md-4 text-center" style="text-align: center;">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+              <?php grace_news_the_custom_logo() ?>         
+            </a>
         </div>
-        <div class="col-md-4 mt-4 mb-3 text-center" style="text-align: center;">
-          ГОСУДАРСТВЕННАЯ СЛУЖБА ИСПОЛНЕНИЯ НАКАЗАНИЙ при Правительстве  Кыргызской Республики
+        <div class="col-md-4 text-center" style="text-align: center;">
+          ГОСУДАРСТВЕННАЯ СЛУЖБА ИСПОЛНЕНИЯ НАКАЗАНИЙ ПРИ ПРАВИТЕЛЬСТВЕ КЫРГЫЗСКОЙ РЕСПУБЛИКИ
         </div>
       </div>
     </div>
   </div><!-- .container --> 
   
-  <div class="header_navigation">  
+  <div class="header_navigation" style="box-shadow: 0 10px 6px -10px #777;">  
 	<div class="container">     
-        <div class="toggle">
+        <div class="toggle" >
          <a class="toggleMenu" href="#"><?php esc_html_e('Menu','grace-news'); ?></a>
        </div><!-- toggle --> 
          <div class="grace_navi">                   
             <?php wp_nav_menu( array('theme_location' => 'primary') ); ?>
-         </div><!--.grace_navi -->    
+
+         </div><!--.grace_navi -->
+         
     </div><!-- .container --> 
   </div><!--header_navigation-->
     

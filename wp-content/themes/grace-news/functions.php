@@ -30,8 +30,8 @@ function grace_news_setup() {
 	add_theme_support( 'post-thumbnails' );	
 	add_theme_support( 'title-tag' );	
 	add_theme_support( 'custom-logo', array(
-		'height'      => 250,
-		'width'       => 250,
+		'height'      => 60,
+		//'width'       => 120,
 		'flex-height' => true,
 	) );	
 	add_theme_support( 'custom-background', array(
@@ -75,7 +75,7 @@ function grace_news_font_url(){
 			    $font_family = array();
 			
 			if('off' !== $assistant){
-				$font_family[] = 'Assistant:300,400,600';
+				$font_family[] = 'Roboto:300,400,600';
 			}
 							
 						
@@ -134,8 +134,13 @@ if ( ! function_exists( 'grace_news_the_custom_logo' ) ) :
  *
  */
 function grace_news_the_custom_logo() {
-	if ( function_exists( 'the_custom_logo' ) ) {
-		the_custom_logo();
+	
+	// if ( function_exists( 'the_custom_logo' ) ) {
+	// 	the_custom_logo();
+	// }
+	if(has_custom_logo()){
+		$image = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+		echo "<img src=\"" . $image[0]."\" class=\"rounded-sm \" style=\"height: 100px; \">";
 	}
 }
 endif;
@@ -188,8 +193,62 @@ register_sidebar(array(
 	'name' => 'sidbar_lang', // Отображаемое название области в панели управления
 	'id' => 'sidebar_lang', // Уникальный ID области
 	'description' => __( 'Описание виджета (подсказка).'),
-	'before_widget' => '<div id="" class="form-controll">', // Начало обертки блока
+	'before_widget' => '<div class="lang_panel">', // Начало обертки блока
 	'after_widget' => '</div>', // Конец обертки блока
 	'before_title' => '<h3 class="">', // Начало обертки заголовка
 	'after_title' => '</h3>' // Конец обертки заголовка
 ));
+
+register_sidebar(array(
+	'name' => 'sidebar_persona', // Отображаемое название области в панели управления
+	'id' => 'sidebar_persona', // Уникальный ID области
+	'description' => __( 'Описание виджета (подсказка).'),
+	'before_widget' => '<div class="sidebar_persona">', // Начало обертки блока
+	'after_widget' => '</div>', // Конец обертки блока
+	'before_title' => '', // Начало обертки заголовка
+	'after_title' => '' // Конец обертки заголовка
+));
+
+
+function get_nav_menu_to_post($atts)
+{
+	// echo wp_nav_menu(array('theme_location' => 'primary'));
+	    // First get all the pages in your site
+		$wp_query = new WP_Query();
+		$all_pages = $wp_query->query(array('post_type' => 'page'));
+		$res = "";
+		// Then get your current page ID and children (out of all the pages)
+		$current_page_id = get_the_id();
+		$current_page_children = get_page_children($current_page_id, $all_pages);
+		return (wp_get_nav_menu_items($current_page_id));
+		// Loop through the array of children pages
+		foreach ($all_pages as $child_page) {	
+			echo "<pre>";
+			// echo $child_page->post_title;
+			// if($child_page->ID !== $current_page_id && !empty($child_page->post_title)){
+			// 	 $r = "- <a href=\"". $child_page->guid ."\" >".$child_page->post_title . "</a> <br>" ;
+			// 	 $res = $res . $r;
+			// }
+			
+		}
+		return $res;
+}
+
+add_shortcode('nav', 'get_nav_menu_to_post');
+
+function true_remove_default_widget() {
+	unregister_widget('WP_Widget_Archives'); // Архивы
+	//unregister_widget('WP_Widget_Calendar'); // Календарь
+	//unregister_widget('WP_Widget_Categories'); // Рубрики
+	unregister_widget('WP_Widget_Meta'); // Мета
+	unregister_widget('WP_Widget_Pages'); // Страницы
+	unregister_widget('WP_Widget_Recent_Comments'); // Свежие комментарии
+	unregister_widget('WP_Widget_Recent_Posts'); // Свежие записи
+	unregister_widget('WP_Widget_RSS'); // RSS
+	//unregister_widget('WP_Widget_Search'); // Поиск
+	unregister_widget('WP_Widget_Tag_Cloud'); // Облако меток
+	unregister_widget('WP_Widget_Text'); // Текст
+	unregister_widget('WP_Nav_Menu_Widget'); // Произвольное меню
+}
+ 
+add_action( 'widgets_init', 'true_remove_default_widget', 20 );

@@ -5,34 +5,25 @@
  * @package Grace News
  */
 ?>
-<?php 
-    if ( ! dynamic_sidebar( 'sidebar_lang' ) ) : 
-        dynamic_sidebar( 'sidebar_lang' );
-    endif; // end sidebar widget area ?>
+<div class="div">
+    <?php 
+        if ( ! dynamic_sidebar( 'sidebar_lang' ) ) : 
+            dynamic_sidebar( 'sidebar_lang' );
+        endif; // end sidebar widget area 
+    ?> 
+</div>
+
 <div id="sidebar"> 
-    	
-    <?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
-        <aside id="categories" class="widget"> 
-        <h3 class="widget-title"><?php esc_html_e( 'Category', 'grace-news' ); ?></h3>          
-            <ul>
-                <?php wp_list_categories('title_li=');  ?>
-            </ul>
-        </aside>        
-       
-        <aside id="archives" class="widget"> 
-        <h3 class="widget-title"><?php esc_html_e( 'Archives', 'grace-news' ); ?></h3>          
-            <ul>
-                <?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
-            </ul>
-        </aside>        
-         
-         <aside id="meta" class="widget"> 
-         <h3 class="widget-title"><?php esc_html_e( 'Meta', 'grace-news' ); ?></h3>          
-            <ul>
-                <?php wp_register(); ?>
-                <li><?php wp_loginout(); ?></li>
-                <?php wp_meta(); ?>
-            </ul>
-        </aside>
-    <?php endif; // end sidebar widget area ?>	
-</div><!-- sidebar -->
+
+        <?php 
+            if ( ! dynamic_sidebar( 'sidebar_persona' ) ) : 
+                dynamic_sidebar( 'sidebar_persona' );
+            endif; // end sidebar widget area 
+        ?> 
+
+        <?php 
+            if ( ! dynamic_sidebar( 'sidebar-1' ) ) : 
+                dynamic_sidebar( 'sidebar-1' );
+            endif; // end sidebar widget area 
+        ?>     
+</div><!--sidebar -->

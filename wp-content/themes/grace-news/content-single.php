@@ -12,9 +12,9 @@
              <?php if( get_theme_mod( 'grace_news_hide_postdate' ) == '') { ?> 
                   <div class="post-date"><?php echo get_the_date(); ?></div><!-- post-date --> 
              <?php } ?>
-             <?php if( get_theme_mod( 'grace_news_hide_postcomments' ) == '') { ?> 
+             <!-- <?php if( get_theme_mod( 'grace_news_hide_postcomments' ) == '') { ?> 
                   <div class="blog-comment"> <a href="<?php comments_link(); ?>"><?php comments_number(); ?></a></div>  
-             <?php } ?>
+             <?php } ?> -->
               <?php if( get_theme_mod( 'grace_news_hide_postcategory' ) == '') { ?>   
                  <?php the_category( __( ', ', 'grace-news' ));?> 
              <?php } ?>                 
@@ -30,15 +30,16 @@
             'after'  => '</div>',
         ) );
         ?>
-        <div class="postmeta">          
+        <div class="postmeta">
+            
             <div class="post-tags"><?php the_tags(); ?> </div>
             <div class="clear"></div>
         </div><!-- postmeta -->
     </div><!-- .entry-content -->
    
-    <footer class="entry-meta">
-      <?php edit_post_link( __( 'Edit', 'grace-news' ), '<span class="edit-link">', '</span>' ); ?>
-    </footer><!-- .entry-meta -->
+    <footer class="entry-meta" style="text-align: right">
+    <?php the_author()?>   
+    </footer>
 
 </article>
 </div><!-- .recentpost_listing-->

@@ -12,7 +12,7 @@ get_header(); ?>
         <section class="content_leftbx_grace_news <?php if( get_theme_mod( 'grace_news_hidesidebar_singlepost' ) ) { ?>fullwidth<?php } ?>">            
                 <?php while ( have_posts() ) : the_post(); ?>
                     <?php get_template_part( 'content', 'single' ); ?>
-                    <?php the_post_navigation(); ?>
+
                     <div class="clear"></div>
                     <?php
                     // If comments are open or we have at least one comment, load up the comment template
